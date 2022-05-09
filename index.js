@@ -174,15 +174,22 @@ const intervalId = setInterval(function () {
     drawBorder();
 }, 100);
 
-let directions = {
-    37: 'left',
-    38: 'up',
-    39: 'right',
-    40: 'down'
+let arrowDirections = {
+    'ArrowLeft': 'left',
+    'ArrowUp': 'up',
+    'ArrowRight': 'right',
+    'ArrowDown': 'down'
+};
+
+let keyDirections = {
+    'KeyA': 'left',
+    'KeyW': 'up',
+    'KeyD': 'right',
+    'KeyS': 'down'
 };
 
 $('body').keydown(function (event) {
-    let newDirection = directions[event.keyCode];
+    let newDirection = arrowDirections[event.code] || keyDirections[event.code];
     if (newDirection !== undefined) {
         snake.setDirection(newDirection);
     }
